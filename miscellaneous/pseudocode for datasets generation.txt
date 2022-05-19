@@ -1,0 +1,75 @@
+
+
+Unique_Normal:
+			for config in all_valid_configs:
+				for load_profile in all_load_profiles:
+					start_point <- vary_load_profile(load_profile, config)
+					num_options = Y
+					datapoint = start_point
+					while num_options > 0:
+						datapoint <- execute_random_option(datapoint, options)
+						datapoint_after_run <- run_powerflow_simulation(datapoint)
+						results <- get_results(datapoint_after_run)
+						write_results_to_csv(results)
+						num_options -= 1
+						if anamoly in results:
+							break
+
+Unique_Normal_Options_Random:
+			for config in all_valid_configs:
+				for load_profile in all_load_profiles:
+					start_point <- vary_load_profile(load_profile, config)
+					num_options = Y
+					datapoint = start_point
+					while num_options > 0:
+						datapoint <- execute_random_option(datapoint, options)
+                                                datapoint <- random_switch_toggle(datapoint)
+						datapoint_after_run <- run_powerflow_simulation(datapoint)
+						results <- get_results(datapoint_after_run)
+						write_results_to_csv(results)
+						num_options -= 1
+						if anamoly in results:
+							break
+
+
+NCombined:
+	while num_of_datasets < required_datasets:
+		state <- generate_preset_valid_state()
+		state <- vary_intial_load(state)
+		datapoint_after_run <- run_powerflow_simulation(state)
+		results <- get_results(datapoint_after_run)
+		write_results_to_csv(results)
+		datapoint = state
+		while len(options) > 0:
+			datapoint <- execute_random_option(datapoint, options)
+			datapoint_after_run <- run_powerflow_simulation(datapoint)
+			results <- get_results(datapoint_after_run)
+			write_results_to_csv(results)
+			if anamoly in results:
+				break
+
+Special: 
+	while num_of_datasets < required_datasets:
+		state <- generate_preset_valid_state()
+		state <- vary_intial_load(state)
+		datapoint_after_run <- run_powerflow_simulation(state)
+		results <- get_results(datapoint_after_run)
+		write_results_to_csv(results)
+		start_point = state
+		error_count = 0
+		while error_count < error_point_factor:
+			datapoint <- execute_random_option(start_point, options)
+			datapoint_after_run <- run_powerflow_simulation(datapoint)
+			results <- get_results(datapoint_after_run)
+			if anamoly in results:
+				write_results_to_csv(results)
+				error_count += 1
+
+Attack:
+
+list_of_permutations = generate_all_possible_config()
+for config in list_of_permutations:
+	state <- generate_state(config)
+	datapoint_after_run <- run_powerflow_simulation(state)
+	results <- get_results(datapoint_after_run)
+	write_results_to_csv(results)

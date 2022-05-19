@@ -1,0 +1,4 @@
+{'activation_func': 'tanh', 'batch_size': 1024, 'epochs': 100, 'first_layer_nodes': 256, 'last_layer_nodes': 4, 'loss_func': 'binary_crossentropy', 'n_layers': 4}
+Building Best Model
+Model: 1501 n_layers:4 first_layer_nodes:256 last_layer_nodes:4 activation_func:tanh loss_func:binary_crossentropy
+Model: "sequential_1501"

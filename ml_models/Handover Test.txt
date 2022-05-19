@@ -1,0 +1,13 @@
+Testing: ../datasets/Testing/unconstrained.csv Training: ../datasets/Training/constrained.csv Model: XGB
+TN 2 TP 19987 FN 10 FP 1 
+Overall statistics: Accuracy: 99.945% Precision: 0.9999499699819892 Recall: 0.9994999249887483 F1 Score: 0.9997248968363137
+
+Testing: ../datasets/Testing/unconstrained.csv Training: ../datasets/Training/constrained.csv Model: RF
+TN 2 TP 19990 FN 7 FP 1 
+Overall statistics: Accuracy: 99.96% Precision: 0.9999499774898705 Recall: 0.9996499474921238 F1 Score: 0.9997999399819946
+
+Testing: ../datasets/Testing/unconstrained.csv Training: ../datasets/Training/constrained.csv Model: LogisticRegression
+TN 3 TP 5479 FN 14518 FP 0 
+Overall statistics: Accuracy: 27.41% Precision: 1.0 Recall: 0.2739910986647997 F1 Score: 0.430130318731355
+
+Testing: ../datasets/Testing/unconstrained.csv Training: ../datasets/Training/constrained.csv Model: Adaboost
